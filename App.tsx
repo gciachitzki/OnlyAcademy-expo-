@@ -1,8 +1,9 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginScreen from './src/Login'; 
-import UserScreen from './src/User'; 
+import LoginScreen from './src/pages/login/Login';
+import UserProfile from './src/pages/profile/TelaInicial'; 
+
 
 const Stack = createStackNavigator();
 
@@ -11,7 +12,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Login' }} />
-        <Stack.Screen name="User" component={UserScreen} options={{ title: 'Perfil do Usuário' }} />
+        <Stack.Screen name="User" component={UserProfile} options={{ title: 'Tela de Usuario' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
