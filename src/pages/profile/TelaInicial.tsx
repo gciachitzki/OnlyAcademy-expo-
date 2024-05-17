@@ -5,7 +5,7 @@ import FtPerfil from '../../Imagens/foto.jpeg';
 import FtFeed from '../../Imagens/feed.jpeg';
 import FtCapa from '../../Imagens/capa.jpeg';
 
-export const Profile = ({}) => {
+export const Profile = ({ navigation }) => {
   const [showAll, setShowAll] = useState(true);
   const [showPhotos, setShowPhotos] = useState(false);
   const [showVideos, setShowVideos] = useState(false);
@@ -83,11 +83,11 @@ export const Profile = ({}) => {
       />
 
       <FAB
-        icon="message-text-outline"
+        icon="camera"
         style={styles.messageFab}
         size={'small'}
         mode={'flat'}
-        onPress={() => console.log('Pressed')}
+        onPress={() => navigation.navigate('CameraScreen')}
       />
 
       <View style={styles.profileContainer}>
