@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+</head>
+<body>
+  <h1>Assinatura Mensal</h1>
+  <p>Descrição: Assinatura mensal</p>
+  <p>Valor: R$9,99</p>
+  <button onclick="handleCheckout()">Comprar</button>
+
+  <script>
+    function handleCheckout() {
+      const product = {
+        id: '1',
+        title: 'Assinatura',
+        description: 'Assinatura Mensal',
+        quantity: 1,
+        currency_id: 'BRL',
+        unit_price: 9.99,
+      };
+
+      fetch('https://api.mercadopago.com/checkout/preferences', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer TEST-2268946808585804-052808-a09485f33dff714327d4172f64658f25-688029748',
+        },
+        body: JSON.stringify({
+          items: [product],
+        }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Redirecionar o usuário para a página de pagamento
+        window.location.href = data.init_point;
+      })
+      .catch(error => console.error('Erro:', error));
+    }
+  </script>
+</body>
+</html>

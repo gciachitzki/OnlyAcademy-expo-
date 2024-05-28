@@ -10,8 +10,13 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 const Login = ({ navigation }) => {
   const handleLogin = () => {
+    // Navegar para outra tela (por exemplo, tela do usuário)
+    navigation.navigate('User', { screenProps: { amount: 100, title: 'Product Title' } });
+  };
 
-    navigation.navigate('User');
+  const handleCadastro = () => {
+    // Navegar para a tela de pagamento
+    navigation.navigate('Home', { amount: 100, title: 'Product Title' });
   };
 
   return (
@@ -29,11 +34,13 @@ const Login = ({ navigation }) => {
       />
       <TouchableOpacity
         style={styles.button}
-        onPress={handleLogin} // Chame a função handleLogin ao pressionar o botão de login
+        onPress={handleLogin}
       >
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={handleCadastro}
+      >
         <Text style={styles.registerText}>
           Ainda não tem cadastro?{" "}
           <Text style={styles.registerLink}>Cadastrar-se</Text>
