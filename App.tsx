@@ -6,6 +6,7 @@ import LoginScreen from './src/pages/login/Login';
 import UserProfile from './src/pages/profile/TelaInicial';
 import CameraScreen from './src/pages/camera/CameraScreen';
 import Home from './src/pages/Tela Pagamento/Home';
+import CreatePost from './src/pages/camera/CreatePost';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,7 @@ const App = () => {
         <Stack.Screen name="User" component={UserProfile} options={{ title: 'Perfil do Usuário' }} />
         <Stack.Screen name="CameraScreen" component={CameraScreen} options={{ title: 'Câmera' }} />
         <Stack.Screen name="Home" component={Home} options={{ title: 'Tela de Pagamento' }} />
+        <Stack.Screen name="CreatePost" component={CreatePost} options={{ title: 'Salvar Foto' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

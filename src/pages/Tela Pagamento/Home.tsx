@@ -4,7 +4,7 @@ import { View, Text, Button, StyleSheet, Linking } from 'react-native';
 const Home = () => {
   const handlePayment = () => {
     // URL de pagamento para a assinatura mensal (substitua pela sua URL real)
-    const paymentUrl = 'http://192.168.80.199:8082/TelaAssinatura.html';
+    const paymentUrl = 'http://172.23.16.1:8082/TelaAssinatura.html';
     Linking.openURL(paymentUrl);
   };
 

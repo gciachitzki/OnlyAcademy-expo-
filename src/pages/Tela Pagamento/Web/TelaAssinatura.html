@@ -6,21 +6,40 @@
   <title>Checkout</title>
 </head>
 <body>
-  <h1>Assinatura Mensal</h1>
-  <p>Descrição: Assinatura mensal</p>
-  <p>Valor: R$9,99</p>
-  <button onclick="handleCheckout()">Comprar</button>
+  <h1>Escolha a Assinatura</h1>
+
+  <h2>Assinatura Mensal</h2>
+  <p>Descrição: Assinatura mensal do produto XYZ</p>
+  <p>Valor: R$9,99/mês</p>
+  <button onclick="handleCheckout('mensal')">Comprar Mensal</button>
+
+  <h2>Assinatura Anual</h2>
+  <p>Descrição: Assinatura anual do produto XYZ</p>
+  <p>Valor: R$99,99/ano</p>
+  <button onclick="handleCheckout('anual')">Comprar Anual</button>
 
   <script>
-    function handleCheckout() {
-      const product = {
-        id: '1',
-        title: 'Assinatura',
-        description: 'Assinatura Mensal',
-        quantity: 1,
-        currency_id: 'BRL',
-        unit_price: 9.99,
-      };
+    function handleCheckout(option) {
+      let product = {};
+      if (option === 'mensal') {
+        product = {
+          id: '1',
+          title: 'Assinatura Mensal',
+          description: 'Assinatura Mensal',
+          quantity: 1,
+          currency_id: 'BRL',
+          unit_price: 9.99,
+        };
+      } else if (option === 'anual') {
+        product = {
+          id: '2',
+          title: 'Assinatura Anual',
+          description: 'Assinatura Anual',
+          quantity: 1,
+          currency_id: 'BRL',
+          unit_price: 99.99,
+        };
+      }
 
       fetch('https://api.mercadopago.com/checkout/preferences', {
         method: 'POST',
@@ -35,7 +54,8 @@
       .then(response => response.json())
       .then(data => {
         // Redirecionar o usuário para a página de pagamento
-        window.location.href = data.init_point;
+        window.location.href = data.init_point
+        window.location.href = 'http://192.168.80.199:8082/Sucess.htm';
       })
       .catch(error => console.error('Erro:', error));
     }

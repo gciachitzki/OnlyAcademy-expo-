@@ -75,11 +75,11 @@ export const Profile = ({ navigation }) => {
       />
 
       <FAB
-        icon="arrow-left"
+        icon="anchor"
         style={styles.backFab}
         size={'small'}
         mode={'flat'}
-        onPress={() => console.log('Pressed')}
+        onPress={() => navigation.navigate('CreatePost')}
       />
 
       <FAB

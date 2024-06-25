@@ -7,9 +7,18 @@ import {
   View,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { supabase } from "../../services/supabaseClient";
 
 const Login = ({ navigation }) => {
-  const handleLogin = () => {
+  const handleLogin = async () => {
+    await supabase.auth.signOut()
+    let { data, error } = await supabase.auth.signInWithPassword({
+      email: 'testuser@test.com',
+      password: 'testUser'
+    })
+    console.log({user: JSON.stringify(data), error})
+    console.log("-----------------------------")
+
     // Navegar para outra tela (por exemplo, tela do usuário)
     navigation.navigate('User', { screenProps: { amount: 100, title: 'Product Title' } });
   };
@@ -21,7 +30,7 @@ const Login = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Ionicons name={"logo-android"} size={100} color={"#1B1B1B"} />
+      <Ionicons name={"paw"} size={100} color={"#4F2197"} />
       <Text style={styles.title}>Tela de Login</Text>
       <Text style={styles.subtitle}>Seja bem vindo</Text>
       <TextInput
